@@ -9,8 +9,8 @@ import java.util.Properties;
 
 /**
  * @author ellis.luo
- * @date 16/11/4 ÏÂÎç5:15
- * @description MQ Éú²úÕß
+ * @date 16/11/4 ä¸‹åˆ5:15
+ * @description MQ ç”Ÿäº§è€…
  */
 public class MQProducer
 {
@@ -25,11 +25,11 @@ public class MQProducer
     static
     {
         Properties properties = new Properties();
-        properties.put(PropertyKeyConst.ProducerId, producerId);// ÄúÔÚMQ¿ØÖÆÌ¨´´½¨µÄProducer ID
-        properties.put(PropertyKeyConst.AccessKey, accessKey);// ¼øÈ¨ÓÃAccessKey£¬ÔÚ°¢ÀïÔÆ·şÎñÆ÷¹ÜÀí¿ØÖÆÌ¨´´½¨
-        properties.put(PropertyKeyConst.SecretKey, secretKey);// ¼øÈ¨ÓÃSecretKey£¬ÔÚ°¢ÀïÔÆ·şÎñÆ÷¹ÜÀí¿ØÖÆÌ¨´´½¨
+        properties.put(PropertyKeyConst.ProducerId, producerId);// ï¿½ï¿½ï¿½ï¿½MQï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Producer ID
+        properties.put(PropertyKeyConst.AccessKey, accessKey);// ï¿½ï¿½È¨ï¿½ï¿½AccessKeyï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½
+        properties.put(PropertyKeyConst.SecretKey, secretKey);// ï¿½ï¿½È¨ï¿½ï¿½SecretKeyï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½
         producer = ONSFactory.createProducer(properties);
-        // ÔÚ·¢ËÍÏûÏ¢Ç°£¬±ØĞëµ÷ÓÃstart·½·¨À´Æô¶¯Producer£¬Ö»Ğèµ÷ÓÃÒ»´Î¼´¿É
+        // ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½startï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Producerï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î¼ï¿½ï¿½ï¿½
         producer.start();
     }
 
@@ -39,27 +39,21 @@ public class MQProducer
         // // Message Topic
         // "TopicTestMQ",
         // // Message Tag,
-        // // ¿ÉÀí½âÎªGmailÖĞµÄ±êÇ©£¬¶ÔÏûÏ¢½øĞĞÔÙ¹éÀà£¬·½±ãConsumerÖ¸¶¨¹ıÂËÌõ¼şÔÚMQ·şÎñÆ÷¹ıÂË
+        // // å¯ç†è§£ä¸ºGmailä¸­çš„æ ‡ç­¾ï¼Œå¯¹æ¶ˆæ¯è¿›è¡Œå†å½’ç±»ï¼Œæ–¹ä¾¿ConsumeræŒ‡å®šè¿‡æ»¤æ¡ä»¶åœ¨MQæœåŠ¡å™¨è¿‡æ»¤
         // "TagA",
         // // Message Body
-        // // ÈÎºÎ¶ş½øÖÆĞÎÊ½µÄÊı¾İ£¬ MQ²»×öÈÎºÎ¸ÉÔ¤£¬
-        // // ĞèÒªProducerÓëConsumerĞ­ÉÌºÃÒ»ÖÂµÄĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯·½Ê½
+        // // ä»»ä½•äºŒè¿›åˆ¶å½¢å¼çš„æ•°æ®ï¼Œ MQä¸åšä»»ä½•å¹²é¢„ï¼Œ
+        // // éœ€è¦Producerä¸Consumeråå•†å¥½ä¸€è‡´çš„åºåˆ—åŒ–å’Œååºåˆ—åŒ–æ–¹å¼
         // "Hello MQ".getBytes());
-        // ÉèÖÃ´ú±íÏûÏ¢µÄÒµÎñ¹Ø¼üÊôĞÔ£¬Çë¾¡¿ÉÄÜÈ«¾ÖÎ¨Ò»£¬ÒÔ·½±ãÄúÔÚÎŞ·¨Õı³£ÊÕµ½ÏûÏ¢Çé¿öÏÂ£¬¿ÉÍ¨¹ıMQ¿ØÖÆÌ¨²éÑ¯ÏûÏ¢²¢²¹·¢
-        // ×¢Òâ£º²»ÉèÖÃÒ²²»»áÓ°ÏìÏûÏ¢Õı³£ÊÕ·¢
+        // è®¾ç½®ä»£è¡¨æ¶ˆæ¯çš„ä¸šåŠ¡å…³é”®å±æ€§ï¼Œè¯·å°½å¯èƒ½å…¨å±€å”¯ä¸€ï¼Œä»¥æ–¹ä¾¿æ‚¨åœ¨æ— æ³•æ­£å¸¸æ”¶åˆ°æ¶ˆæ¯æƒ…å†µä¸‹ï¼Œå¯é€šè¿‡MQæ§åˆ¶å°æŸ¥è¯¢æ¶ˆæ¯å¹¶è¡¥å‘
+        // æ³¨æ„ï¼šä¸è®¾ç½®ä¹Ÿä¸ä¼šå½±å“æ¶ˆæ¯æ­£å¸¸æ”¶å‘
         // msg.setKey("ORDERID_100");
-        // ·¢ËÍÏûÏ¢£¬Ö»Òª²»Å×Òì³£¾ÍÊÇ³É¹¦
-        // ´òÓ¡Message ID£¬ÒÔ±ãÓÃÓÚÏûÏ¢·¢ËÍ×´Ì¬²éÑ¯
+        // å‘é€æ¶ˆæ¯ï¼Œåªè¦ä¸æŠ›å¼‚å¸¸å°±æ˜¯æˆåŠŸ
+        // æ‰“å°Message IDï¼Œä»¥ä¾¿ç”¨äºæ¶ˆæ¯å‘é€çŠ¶æ€æŸ¥è¯¢
 
         Message msg = new Message( //
-                // Message Topic
                 entry.getTopic(),
-                // Message Tag,
-                // ¿ÉÀí½âÎªGmailÖĞµÄ±êÇ©£¬¶ÔÏûÏ¢½øĞĞÔÙ¹éÀà£¬·½±ãConsumerÖ¸¶¨¹ıÂËÌõ¼şÔÚMQ·şÎñÆ÷¹ıÂË
                 entry.getTags(),
-                // Message Body
-                // ÈÎºÎ¶ş½øÖÆĞÎÊ½µÄÊı¾İ£¬ MQ²»×öÈÎºÎ¸ÉÔ¤£¬
-                // ĞèÒªProducerÓëConsumerĞ­ÉÌºÃÒ»ÖÂµÄĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯·½Ê½
                 Hessian2Serialization.serialize(entry.getBody()));
 
         SendResult sendResult = producer.send(msg);
