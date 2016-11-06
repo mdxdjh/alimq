@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration monitorInterval="60">
+    <properties>
+        <property name="pattern">[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%p] [%t] [%c{1.}] [%L] %m%n</property>
+        <property name="monitorpattern">%m%n</property>
+        <property name="infologpath">./logs</property>
+        <property name="errorlogpath">/data/errorlog</property>
+        <property name="applogpath">/data/applog</property>
+        <property name="monitorlogpath">/data/monitorlog</property>
+        <property name="appname">epay</property>
+        
+    </properties>
+    <appenders>
+
+        <!--####################################-->
+        <!--# catalina输出(方便开发调试用)-->
+        <!--####################################-->
+        <Console name="stdout" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+
+        <!--####################################-->
+        <!--# 系统运行INFO日志(按天保存,最多保留7天)-->
+        <!--####################################-->
+        <RollingRandomAccessFile name="infologFile" immediateFlush="false" bufferSize="10240"
+                                 fileName="${infologpath}/${appname}-info.log"
+                                 filePattern="${infologpath}/${appname}-info.log.%d{yyyy-MM-dd}.gz">
+            <PatternLayout>
+                <pattern>${pattern}</pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${infologpath}" maxDepth="2">
+                    <IfFileName glob="${appname}-info.log.*.gz" />
+                    <IfLastModified age="7d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingRandomAccessFile>
+
+        <!--####################################-->
+        <!--# 系统运行ERROR日志(永久保存)-->
+        <!--####################################-->
+        <RollingRandomAccessFile name="errorlogFile" immediateFlush="true"
+                                 fileName="${errorlogpath}/${appname}/${appname}-error.log"
+                                 filePattern="${errorlogpath}/${appname}/${appname}-error.log.%d{yyyy-MM-dd}.gz"
+                                 ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <TimeBasedTriggeringPolicy/>
+        </RollingRandomAccessFile>
+
+        <!--####################################-->
+        <!--# 业务自定义日志(永久保存)-->
+        <!--####################################-->
+        <RollingRandomAccessFile name="applogFile" immediateFlush="true"
+                                 fileName="${applogpath}/${appname}/${appname}-app.log"
+                                 filePattern="${applogpath}/${appname}/${appname}-app.log.%d{yyyy-MM-dd}.gz"
+                                 ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+        </RollingRandomAccessFile>
+
+
+		<RollingRandomAccessFile name="zabbixAppender" immediateFlush="true"
+            					 fileName="${monitorlogpath}/${appname}/zabbix.log" 
+            					 filePattern="${monitorlogpath}/${appname}/zabbix.log-%d{yyyy-MM-dd}"
+            					 ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${monitorpattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="opentsdbAppender" immediateFlush="true"
+            					 fileName="${monitorlogpath}/${appname}/opentsdb.log" 
+            					 filePattern="${monitorlogpath}/${appname}/opentsdb.log-%d{yyyy-MM-dd}"
+            					 ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${monitorpattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="graphiteAppender" immediateFlush="true"
+            					 fileName="${monitorlogpath}/${appname}/graphite.log" 
+            					 filePattern="${monitorlogpath}/${appname}/graphite.log-%d{yyyy-MM-dd}"
+            					 ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${monitorpattern}</Pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy/>
+        </RollingRandomAccessFile>
+
+    </appenders>
+
+    <loggers>
+        <root level="info">
+            <appender-ref ref="stdout"/>
+            <appender-ref ref="infologFile"/>
+            <appender-ref ref="errorlogFile"/>
+        </root>
+
+
+        <Logger name="com.keepc.epay.persistence.mapper" level="DEBUG"/>
+
+        <Logger name="applog" level="info" additivity="false">
+            <AppenderRef ref="applogFile"/>
+        </Logger>
+
+		<Logger name="zabbix" level="info" additivity="false">
+            <AppenderRef ref="zabbixAppender"></AppenderRef>
+            <!-- <AppenderRef ref="stdout"></AppenderRef> -->
+        </Logger>
+        <Logger name="opentsdb" level="info" additivity="false">
+            <AppenderRef ref="opentsdbAppender"></AppenderRef>
+            <!-- <AppenderRef ref="stdout"></AppenderRef> -->
+        </Logger>
+        <Logger name="graphite" level="info" additivity="false">
+            <AppenderRef ref="graphiteAppender"></AppenderRef>
+            <!-- <AppenderRef ref="stdout"></AppenderRef> -->
+        </Logger>
+
+    </loggers>
+
+</configuration>
