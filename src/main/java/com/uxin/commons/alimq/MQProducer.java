@@ -25,11 +25,11 @@ public class MQProducer
     static
     {
         Properties properties = new Properties();
-        properties.put(PropertyKeyConst.ProducerId, producerId);// ����MQ����̨������Producer ID
-        properties.put(PropertyKeyConst.AccessKey, accessKey);// ��Ȩ��AccessKey���ڰ����Ʒ������������̨����
-        properties.put(PropertyKeyConst.SecretKey, secretKey);// ��Ȩ��SecretKey���ڰ����Ʒ������������̨����
+        properties.put(PropertyKeyConst.ProducerId, producerId);// 您在MQ控制台创建的Producer ID
+        properties.put(PropertyKeyConst.AccessKey, accessKey);// 鉴权用AccessKey，在阿里云服务器管理控制台创建
+        properties.put(PropertyKeyConst.SecretKey, secretKey);// 鉴权用SecretKey，在阿里云服务器管理控制台创建
         producer = ONSFactory.createProducer(properties);
-        // �ڷ�����Ϣǰ���������start����������Producer��ֻ�����һ�μ���
+        // 在发送消息前，必须调用start方法来启动Producer，只需调用一次即可
         producer.start();
     }
 
