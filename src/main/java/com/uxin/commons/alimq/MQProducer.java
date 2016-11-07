@@ -1,6 +1,7 @@
 package com.uxin.commons.alimq;
 
 import com.aliyun.openservices.ons.api.*;
+import com.uxin.commons.alimq.common.MQEntry;
 import com.uxin.commons.alimq.serialize.Hessian2Serialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,7 @@ import java.util.Properties;
 /**
  * @author ellis.luo
  * @date 16/11/4 下午5:15
- * @description MQ 生产者
+ * @description MQ生产者
  */
 public class MQProducer
 {

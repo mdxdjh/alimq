@@ -1,6 +1,8 @@
 package com.uxin.commons.alimq;
 
 import com.aliyun.openservices.ons.api.*;
+import com.uxin.commons.alimq.common.MQAnnotation;
+import com.uxin.commons.alimq.common.MQEntry;
 import com.uxin.commons.alimq.serialize.Hessian2Serialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +32,6 @@ public abstract class AbstractConsumer<T>
     {
         try
         {
-
             Properties properties = new Properties();
             properties.put(PropertyKeyConst.ConsumerId, consumerId);// 您在MQ控制台创建的Consumer ID
             properties.put(PropertyKeyConst.AccessKey, accessKey);// 鉴权用AccessKey，在阿里云服务器管理控制台创建

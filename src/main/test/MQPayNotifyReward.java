@@ -1,9 +1,9 @@
 package src.main.test;
 
 import com.uxin.commons.alimq.AbstractConsumer;
-import com.uxin.commons.alimq.MQAnnotation;
-import com.uxin.commons.alimq.MQEntry;
-import com.uxin.commons.alimq.MQTopic;
+import com.uxin.commons.alimq.common.MQAnnotation;
+import com.uxin.commons.alimq.common.MQEntry;
+import com.uxin.commons.alimq.common.MQTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

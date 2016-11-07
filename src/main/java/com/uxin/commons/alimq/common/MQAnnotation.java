@@ -1,4 +1,4 @@
-package com.uxin.commons.alimq;
+package com.uxin.commons.alimq.common;
 
 import java.lang.annotation.*;
 
