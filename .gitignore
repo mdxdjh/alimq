@@ -1,0 +1,77 @@
+# maven
+target/
+test-output/
+dependency-reduced-pom.xml
+release.properties
+pom.xml.releaseBackup
+*.bak
+
+# eclipse ignore
+.settings/
+.project
+.classpath
+bin/
+.pydevproject
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# spring
+.springBeans
+
+# temp ignore
+logs/
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+*.swp
+*.swo
+*~
+
+# log4j2
+.factorypath
+
+# system ignore
+.DS_Store
+Thumbs.db
+
+# C/C++
+*.o
+*.so
+
+# python
+__pycache__/
+*.py[cod]
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.mo
+*.pot
+docs/_build/
