@@ -4,13 +4,13 @@
 
     <groupId>com.uxin.alimq</groupId>
     <artifactId>alimq</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:https://gitlab.uxin001.com:9090/biz/alimq.git</connection>
         <url>scm:git:https://gitlab.uxin001.com:9090/biz/alimq.git</url>
         <developerConnection>scm:git:https://gitlab.uxin001.com:9090/biz/alimq.git</developerConnection>
-        <tag>alimq-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <dependencies>
