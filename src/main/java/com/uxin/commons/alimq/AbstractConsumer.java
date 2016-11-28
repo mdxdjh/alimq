@@ -20,7 +20,7 @@ public abstract class AbstractConsumer<T>
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private Consumer consumer;
-    private String consumerId = "CID_uxin2016";
+    private String consumerId = "CID_uxinpay";
     private String accessKey = "LTAI1F5YB8LVyiOi";
     private String secretKey = "I7wtbvphZbgrcHl4xmhw19U48hFxFA";
 

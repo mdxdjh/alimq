@@ -7,5 +7,5 @@ package com.uxin.commons.alimq.common;
  */
 public class MQTopic
 {
-    public static final String PAY_NOTIFY_REWARD = "uxin_test";
+    public static final String PAY_NOTIFY_REWARD = "pay_notify_reward";
 }

@@ -13,8 +13,6 @@ import java.util.List;
 @Component
 public class MQComsumerMain implements ApplicationListener<ApplicationEvent>
 {
-    private static final Logger logger = LoggerFactory.getLogger(MQComsumerMain.class);
-
     private static boolean isStart = false;
 
     @Autowired

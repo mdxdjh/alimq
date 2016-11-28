@@ -19,7 +19,7 @@ public class MQProducer
 
     private static Producer producer;
 
-    private static String producerId = "PID_uxin2016";
+    private static String producerId = "PID_uxinpay";
     private static String accessKey = "LTAI1F5YB8LVyiOi";
     private static String secretKey = "I7wtbvphZbgrcHl4xmhw19U48hFxFA";
 

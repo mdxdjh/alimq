@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MQPayNotifyReward extends AbstractConsumer<String>
 {
-    private static final Logger logger = LoggerFactory.getLogger(MQPayNotifyReward.class);
 
     @Override
     @MQAnnotation(topic = MQTopic.PAY_NOTIFY_REWARD)
@@ -24,7 +23,7 @@ public class MQPayNotifyReward extends AbstractConsumer<String>
     {
         if (entry.getBody().equals("hello"))
         {
-            logger.info("i success");
+            System.out.println("i success");
         }
         else
         {
