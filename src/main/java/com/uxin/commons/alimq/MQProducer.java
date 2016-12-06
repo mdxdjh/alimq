@@ -13,17 +13,31 @@ import java.util.Properties;
  * @date 16/11/4 下午5:15
  * @description MQ生产者
  */
-public class MQProducer
+public class MQProducer<T>
 {
     private static final Logger logger = LoggerFactory.getLogger(MQProducer.class);
 
-    private static Producer producer;
+    private  Producer producer;
 
-    private static String producerId = "PID_uxinpay";
-    private static String accessKey = "LTAI1F5YB8LVyiOi";
-    private static String secretKey = "I7wtbvphZbgrcHl4xmhw19U48hFxFA";
+    private  String producerId ;
+    private  String accessKey ;
+    private  String secretKey ;
+    private  String topic;
+    private  String tag;
 
-    static
+    public MQProducer(String producerId, String accessKey, String secretKey){
+        this.producerId = producerId;
+        this.accessKey = accessKey;
+        this.secretKey = secretKey;
+    }
+    public MQProducer(String producerId, String accessKey, String secretKey, String topic, String tag){
+        this.topic = topic;
+        this.tag = tag;
+        this.producerId = producerId;
+        this.accessKey = accessKey;
+        this.secretKey = secretKey;
+    }
+    public void init()
     {
         Properties properties = new Properties();
         properties.put(PropertyKeyConst.ProducerId, producerId);// 您在MQ控制台创建的Producer ID
@@ -32,6 +46,12 @@ public class MQProducer
         producer = ONSFactory.createProducer(properties);
         // 在发送消息前，必须调用start方法来启动Producer，只需调用一次即可
         producer.start();
+    }
+
+    public  void destroy(){
+        if(producer != null) {
+            producer.shutdown();
+        }
     }
 
     /**
@@ -43,7 +63,7 @@ public class MQProducer
      *
      * @param entry
      */
-    public static void send(MQEntry entry)
+    public  void send(MQEntry entry)
     {
         // Message msg = new Message( //
         // // Message Topic
@@ -61,11 +81,16 @@ public class MQProducer
         // 发送消息，只要不抛异常就是成功
         // 打印Message ID，以便用于消息发送状态查询
 
-        Message msg = new Message( //
-                entry.getTopic(), entry.getTags(), Hessian2Serialization.serialize(entry.getBody()));
+        Message msg = new Message( entry.getTopic(), entry.getTags(), Hessian2Serialization.serialize(entry.getBody()));
 
         SendResult sendResult = producer.send(msg);
-        logger.info("Send Message success. Message ID is: " + sendResult.getMessageId());
+    }
+
+    public  void send(T body)
+    {
+
+        Message msg = new Message( topic, tag, Hessian2Serialization.serialize(body));
+        SendResult sendResult = producer.send(msg);
     }
 
     /**
@@ -78,7 +103,7 @@ public class MQProducer
      *
      * @param entry
      */
-    public static void sendAsync(MQEntry entry)
+    public void sendAsync(MQEntry entry)
     {
         Message msg = new Message( //
                 entry.getTopic(), entry.getTags(), Hessian2Serialization.serialize(entry.getBody()));
@@ -114,7 +139,7 @@ public class MQProducer
      *
      * @param entry
      */
-    public static void sendOneway(MQEntry entry)
+    public  void sendOneway(MQEntry entry)
     {
         Message msg = new Message( //
                 entry.getTopic(), entry.getTags(), Hessian2Serialization.serialize(entry.getBody()));

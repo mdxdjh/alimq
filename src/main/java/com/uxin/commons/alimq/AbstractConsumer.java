@@ -20,11 +20,12 @@ public abstract class AbstractConsumer<T>
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private Consumer consumer;
-    private String consumerId = "CID_uxinpay";
-    private String accessKey = "LTAI1F5YB8LVyiOi";
-    private String secretKey = "I7wtbvphZbgrcHl4xmhw19U48hFxFA";
+    private String consumerId;
+    private String accessKey;
+    private String secretKey;
 
     private String topic;
+    private String tag;
 
     public abstract void process(MQEntry<T> entry);
 
@@ -38,7 +39,6 @@ public abstract class AbstractConsumer<T>
             properties.put(PropertyKeyConst.SecretKey, secretKey);// 鉴权用SecretKey，在阿里云服务器管理控制台创建
             consumer = ONSFactory.createConsumer(properties);
 
-            analysisAnnotation(); // 解析注解配置信息
             logger.info(getClass().getSimpleName() + " init end, properties:" + properties);
         }
         catch (Exception e)
@@ -48,6 +48,12 @@ public abstract class AbstractConsumer<T>
         }
     }
 
+    public void destroy(){
+        if(consumer != null)
+        {
+            consumer.shutdown();
+        }
+    }
     public void todo()
     {
         if (consumer == null)
@@ -55,7 +61,7 @@ public abstract class AbstractConsumer<T>
             init();
         }
 
-        consumer.subscribe(topic, "*", new MessageListener()
+        consumer.subscribe(topic, tag, new MessageListener()
         {
             public Action consume(Message message, ConsumeContext context)
             {
@@ -78,11 +84,43 @@ public abstract class AbstractConsumer<T>
         consumer.start();
     }
 
-    private void analysisAnnotation() throws Exception
-    {
-        Method method = Class.forName(getClass().getName()).getDeclaredMethod("process", MQEntry.class);
-        MQAnnotation mqAnnotation = method.getAnnotation(MQAnnotation.class);
-        topic = mqAnnotation.topic();
+    public String getConsumerId() {
+        return consumerId;
     }
 
+    public void setConsumerId(String consumerId) {
+        this.consumerId = consumerId;
+    }
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public void setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 }
