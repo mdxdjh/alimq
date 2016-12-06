@@ -49,7 +49,9 @@ public class MQProducer<T>
     }
 
     public  void destroy(){
-        producer.shutdown();
+        if(producer != null) {
+            producer.shutdown();
+        }
     }
 
     /**

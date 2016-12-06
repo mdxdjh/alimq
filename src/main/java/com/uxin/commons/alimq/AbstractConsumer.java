@@ -49,7 +49,10 @@ public abstract class AbstractConsumer<T>
     }
 
     public void destroy(){
-        consumer.shutdown();
+        if(consumer != null)
+        {
+            consumer.shutdown();
+        }
     }
     public void todo()
     {
