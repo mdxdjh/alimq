@@ -7,5 +7,8 @@ package com.uxin.commons.alimq.common;
  */
 public class MQTopic
 {
-    public static final String PAY_NOTIFY_REWARD = "pay_notify_reward";
+    public static final String test1 = "uxin_dev";
+
+    public static final String test2 = "uxin_dev_2";
+
 }

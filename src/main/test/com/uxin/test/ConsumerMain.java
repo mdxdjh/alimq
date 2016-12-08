@@ -1,4 +1,4 @@
-package src.main.test;
+package com.uxin.test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ConsumerMain
 {
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("src/main/test/resources/test.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("com/uxin/test/resources/test.xml");
 
     }
 }

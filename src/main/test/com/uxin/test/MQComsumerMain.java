@@ -1,6 +1,7 @@
-package src.main.test;
+package com.uxin.test;
 
-import com.uxin.commons.alimq.AbstractConsumer;
+import com.uxin.commons.alimq.MQConsumer;
+import com.uxin.commons.alimq.common.ConsumerApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +14,22 @@ import java.util.List;
 @Component
 public class MQComsumerMain implements ApplicationListener<ApplicationEvent>
 {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     private static boolean isStart = false;
 
     @Autowired
-    private List<AbstractConsumer> mqs;
+    private List<ConsumerApi> consumers;
+
+    @Autowired
+    private MQConsumer main;
 
     public void onApplicationEvent(ApplicationEvent event)
     {
         if (!isStart)
         {
-            for (AbstractConsumer mq : mqs)
-            {
-                mq.todo();
-            }
+            main.initConsumerProcess(consumers);
         }
     }
+
 }
