@@ -7,11 +7,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd   http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!-- spring beans 组件扫描 -->
-    <context:component-scan base-package="com.uxin.test"/>
+    <context:component-scan base-package="com.ellis.test"/>
 
-    <context:property-placeholder location="com/uxin/test/resources/config.properties"/>
+    <context:property-placeholder location="com/ellis/test/resources/config.properties"/>
 
-    <bean id="mqConsumer" class="com.uxin.commons.alimq.MQConsumer"></bean>
+    <bean id="mqConsumer" class="com.ellis.commons.alimq.MQConsumer"></bean>
 
 
 </beans>

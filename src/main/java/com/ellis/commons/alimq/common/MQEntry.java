@@ -1,4 +1,4 @@
-package com.uxin.commons.alimq.common;
+package com.ellis.commons.alimq.common;
 
 /**
  * @author ellis.luo

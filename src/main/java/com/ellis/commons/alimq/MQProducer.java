@@ -1,8 +1,8 @@
-package com.uxin.commons.alimq;
+package com.ellis.commons.alimq;
 
 import com.aliyun.openservices.ons.api.*;
-import com.uxin.commons.alimq.common.MQEntry;
-import com.uxin.commons.alimq.serialize.Hessian2Serialization;
+import com.ellis.commons.alimq.common.MQEntry;
+import com.ellis.commons.alimq.serialize.Hessian2Serialization;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,16 +21,12 @@ public class MQProducer
     private static Producer producer;
 
     private Consumer consumer;
-//    @Value("${producerId}")
-//    private static String producerId;
-//    @Value("${accessKey}")
-//    private static String accessKey;
-//    @Value("${secretKey}")
-//    private static String secretKey;
-
-     private static String producerId = "PID_UXINDEV";
-     private static String accessKey = "LTAI1F5YB8LVyiOi";
-     private static String secretKey = "I7wtbvphZbgrcHl4xmhw19U48hFxFA";
+    @Value("${producerId}")
+    private static String producerId;
+    @Value("${accessKey}")
+    private static String accessKey;
+    @Value("${secretKey}")
+    private static String secretKey;
 
     static
     {

@@ -1,9 +1,9 @@
-package com.uxin.test;
+package src.main.test.com.ellis.test;
 
-import com.uxin.commons.alimq.common.MQEntry;
-import com.uxin.commons.alimq.MQProducer;
-import com.uxin.commons.alimq.common.MQTag;
-import com.uxin.commons.alimq.common.MQTopic;
+import com.ellis.commons.alimq.MQProducer;
+import com.ellis.commons.alimq.common.MQEntry;
+import com.ellis.commons.alimq.common.MQTag;
+import com.ellis.commons.alimq.common.MQTopic;
 
 /**
  * @author ellis.luo

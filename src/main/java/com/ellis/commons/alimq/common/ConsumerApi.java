@@ -1,6 +1,4 @@
-package com.uxin.commons.alimq.common;
-
-import com.uxin.commons.alimq.common.MQEntry;
+package com.ellis.commons.alimq.common;
 
 /**
  * @author ellis.luo

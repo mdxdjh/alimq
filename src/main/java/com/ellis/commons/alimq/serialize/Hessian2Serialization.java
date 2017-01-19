@@ -1,4 +1,4 @@
-package com.uxin.commons.alimq.serialize;
+package com.ellis.commons.alimq.serialize;
 
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;

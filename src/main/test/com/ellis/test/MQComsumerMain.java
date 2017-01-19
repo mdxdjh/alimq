@@ -1,7 +1,7 @@
-package com.uxin.test;
+package src.main.test.com.ellis.test;
 
-import com.uxin.commons.alimq.MQConsumer;
-import com.uxin.commons.alimq.common.ConsumerApi;
+import com.ellis.commons.alimq.MQConsumer;
+import com.ellis.commons.alimq.common.ConsumerApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
